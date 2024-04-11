@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Name: {{ Employee.firstname }} {{ Employee.lastname }}</h1>
+
+  <p><strong>Age : </strong> {{Age}}</p>
+  <p><strong>City:</strong> {{ Employee.city }}</p>
+  <p><strong>Phone:</strong> {{ Employee.phone }}</p>
+  <p><strong>Education:</strong> {{ Employee.education }}</p>
+  <p><strong>Experience:</strong> {{ Employee.experience }}</p>
+  <p><strong>Awards:</strong> {{ Employee.awards }}</p>
+  <p><strong>Hobbies:</strong> {{ Employee.hobbies }}</p>
+  <p><strong>Skills:</strong> {{ Employee.skills }}</p>
+  <p><strong>References:</strong> {{ Employee.references }}</p>
+  <p><strong>Other:</strong> {{ Employee.other }}</p>
+  {% if Employee.employee_id_id == user.id%}
+         <p><a href="{% url 'employee-update' Employee.employee_id_id%}">Update</a></p>
+  {% endif %}
+
+ {% endblock %}
+ 

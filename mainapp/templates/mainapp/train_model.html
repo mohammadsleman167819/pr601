@@ -1,0 +1,57 @@
+
+{% extends "base_generic.html" %}
+{% block sidebar %}
+<ul class="sidebar-nav">
+    <li><a href="/admin/">return to admin panel</a></li>
+    <li><a href="{% url 'model_results' %}">current training results</a></li>
+    
+</ul>
+{% endblock%}
+{% block content %}
+
+  {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+      There were some errors in your form:
+      <ul>
+        {% for field in form %}
+          {% for error in field.errors %}
+            <li>{{ field.label }}: {{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <form method="post" action="{% url 'train_model' %}">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>{{ form.number_of_clusters.label_tag }}</td>
+        <td>{{ form.number_of_clusters }}</td>
+        <td>{{ form.number_of_clusters.help_text }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.word2vec_vector_size.label_tag }}</td>
+        <td>{{ form.word2vec_vector_size }}</td>
+        <td>{{ form.word2vec_vector_size.help_text }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.word2vec_window_size.label_tag }}</td>
+        <td>{{ form.word2vec_window_size }}</td>
+        <td>{{ form.word2vec_window_size.help_text }}</td>  
+      </tr>
+      <tr>
+        <td>{{ form.word2vec_word_min_count.label_tag }}</td>
+        <td>{{ form.word2vec_word_min_count }}</td>
+        <td>{{ form.word2vec_word_min_count.help_text }}</td>  
+      </tr>
+      <tr>
+        <td>{{ form.start_date.label_tag }}</td>
+        <td>{{ form.start_date }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="train">
+  </form>
+
+ 
+{% endblock %}

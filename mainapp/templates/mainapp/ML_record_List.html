@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+
+{% block sidebar %}
+<ul class="sidebar-nav">
+    <li><a href="/admin/">return to admin panel</a></li>
+    <li><a href="{% url 'train_model' %}">train new model</a></li>
+</ul>
+{% endblock%}
+
+{% block content %}
+  <h1>Model Training Records</h1>
+  {% if ML_record_list %}
+    <ul>
+      {% for record in ML_record_list %}
+      <li>
+        {{ record.sh_score }} {{ record.ch_score }} {{ record.number_of_clusters }}
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no records </p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Name: {{ Company.name }} </h1>
+
+  <p><strong>City:</strong> {{ Company.city }}</p>
+  <p><strong>Phone:</strong> {{ Company.phone }}</p>
+  <p><strong>Email:</strong>{{ Company.company_id.email }}</p>
+  {% if Company.company_id_id == user.id%}
+         <p><a href="{% url 'company-update' Company.company_id_id%}">Update</a></p>
+  {% endif %}  
+{% endblock %}
