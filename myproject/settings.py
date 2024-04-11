@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {  
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'mydatabase',  
-        'USER': 'root',  
-        'PASSWORD': 'admin',  
-        'HOST': '127.0.0.1',  
+        'NAME': 'svuIteS23Pr601$mydatabase',  
+        'USER': 'svuIteS23Pr601',  
+        'PASSWORD': 'M@3219022s',  
+        'HOST': 'svuIteS23Pr601.mysql.pythonanywhere-services.com',  
         'PORT': '3306',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
