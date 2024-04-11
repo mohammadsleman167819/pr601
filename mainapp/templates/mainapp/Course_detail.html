@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ Course.courseTitle }} </h1>
+
+  <p><strong>Description:</strong> {{ Course.description }}</p>
+  <p><strong>link:</strong> {{ Course.link }}</p>
+  <p><strong>Suggested By:</strong><a href="{{Course.company_id.get_absolute_url}}"> {{ Course.company_id }}</a></p>
+  {% if Course.company_id_id == user.id%}
+  <p><a href="{% url 'course-update' Course.course_id%}">Update</a></p>
+  <p><a href="{% url 'course-delete' Course.course_id%}">Delete</a> </p>
+  {% endif %}
+{% endblock %}

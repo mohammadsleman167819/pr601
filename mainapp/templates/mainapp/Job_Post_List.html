@@ -1,0 +1,33 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Job Posts List</h1>
+  
+  
+  {% if user.is_authenticated %}
+    {% if user.is_company %}
+      <p><a href="{% url 'job_post-create' %}">add post</a></p> 
+    {% endif %}
+  {% endif %}
+  
+  
+  
+  
+  
+  {% if Job_Post_list %}
+    <br>
+    <ul class="list-group" id="myList">
+    {% for post in Job_Post_list %}
+      <li class="list-group-item">
+        <a href="{{ post.get_absolute_url }}">{{ post.job_title }}</a>
+        ({{post.company_id}})
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no posts </p>
+  {% endif %}
+{%endblock %}
+
+  
